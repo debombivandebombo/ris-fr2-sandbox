@@ -19,6 +19,7 @@ def start_server():
     # Inicializar la RIS real
     ris_hw = RIS()
     ris_hw.on()
+    print(f"{ris_hw.pixels = }")
     print("RIS Server started. Listening on port 17000...")
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

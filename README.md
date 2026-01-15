@@ -1,0 +1,1 @@
+uv run python ris_hardware_server.py   
