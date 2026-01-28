@@ -14,6 +14,7 @@ uv run python ris_hardware_server.py
 import socket
 import json
 from dataclasses import dataclass
+import numpy as np
 
 @dataclass
 class RISConfig:
