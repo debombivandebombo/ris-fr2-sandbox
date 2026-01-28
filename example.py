@@ -27,7 +27,7 @@ print(f"{ris.pixels = }")
 
 # Control RIS pixels independently by list[boolean]
 configuration = [np.random.randint(2) for i in range(3200)] # numpy has already been imported in package
-ris.set_specified_states(configuration)
+# ris.set_specified_states(configuration)
 print(f"random config applied")
 
 # Control RIS pixels by columns from bottom to top (see readme.md)
