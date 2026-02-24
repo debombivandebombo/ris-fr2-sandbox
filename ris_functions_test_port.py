@@ -7,11 +7,15 @@ windows_path = os.path.join(base_path, "windows_x86_64")
 if windows_path not in sys.path:
     sys.path.insert(0, windows_path)
 
+linux_path = os.path.join(base_path, "linux_x86_64")
+if linux_path not in sys.path:
+    sys.path.insert(0, linux_path)
+
 if os.name == 'nt':
     # from windows_x86_64 import *
     from windows_x86_64 import RIS as HW_RIS
 elif os.name == 'posix':
-    from linux_x86_64 import *
+    from linux_x86_64 import RIS as HW_RIS
 
 com = None #define or not the com port number which ris is connected to
 
