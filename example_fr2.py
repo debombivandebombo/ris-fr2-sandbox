@@ -1,17 +1,18 @@
 import os
 import sys
+import platform
 import numpy as np
 
-base_path = os.path.dirname(__file__)
-windows_path = os.path.join(base_path, "windows_x86_64")
-if windows_path not in sys.path:
-    sys.path.insert(0, windows_path)
-
 if os.name == 'nt':
-    # from windows_x86_64 import *
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'windows_x86_64'))
     from windows_x86_64 import RIS as HW_RIS
 elif os.name == 'posix':
-    from linux_x86_64 import RIS as HW_RIS
+    if platform.machine() == 'aarch64':
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'linux_aarch64'))
+        from linux_aarch64 import RIS as HW_RIS
+    else:
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'linux_x86_64'))
+        from linux_x86_64 import RIS as HW_RIS
 
 com = None #define or not the com port number which ris is connected to
 
