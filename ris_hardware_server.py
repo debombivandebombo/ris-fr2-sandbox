@@ -7,6 +7,7 @@ import platform
 if os.name == 'nt':
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'windows_x86_64'))
     from windows_x86_64 import RIS
+elif os.name == 'posix':
     if platform.machine() == 'aarch64':
         sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'linux_aarch64'))
         from linux_aarch64 import RIS
