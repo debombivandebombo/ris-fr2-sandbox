@@ -2,14 +2,17 @@ import socket
 import json
 import os
 import sys
+import platform
 
-# Configuración de ruta para la librería del fabricante
-base_path = os.getcwd()
-lib_path = os.path.join(base_path, "windows_x86_64")
-if lib_path not in sys.path:
-    sys.path.insert(0, lib_path)
-
-from windows_x86_64 import RIS
+if os.name == 'nt':
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'windows_x86_64'))
+    from windows_x86_64 import RIS
+    if platform.machine() == 'aarch64':
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'linux_aarch64'))
+        from linux_aarch64 import RIS
+    else:
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'linux_x86_64'))
+        from linux_x86_64 import RIS
 
 # Configuración del Socket
 UDP_IP = "127.0.0.1"
